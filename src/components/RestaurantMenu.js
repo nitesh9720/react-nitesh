@@ -37,13 +37,13 @@ const RestaurantMenu = () => {
           <h2>city name is {restaurant.city}</h2>
 
           <h2>Area name is {restaurant.areaName}</h2>
-          <h2>Avg rating is{restaurant.avgRating}</h2>
+          <h2>Avg rating is {restaurant.avgRating}</h2>
           <h2>cost for two is {restaurant.costForTwoMessage}</h2>
         </div>
         <div>
           <ul>
             {menu.map((item) => {
-              return <li>{item.card.info.name}</li>;
+              return <li>{item?.card?.info?.name}</li>;
             })}
           </ul>
         </div>

@@ -29,7 +29,7 @@ const Body = () => {
   }
 
 
-  if ((filterRestaurants.length === 0)) {
+  if ((filterRestaurants.length === 0) &&(allRestaurants.length!==0)) {
     return <h1>No restaurant Found</h1>
   }
 
