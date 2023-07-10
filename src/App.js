@@ -1,8 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./components/Header"; 
+import Header from "./components/Header";
 import Body from "./components/body";
 import { Footer } from "./components/Footer";
+import About from "./components/about";
+import Contact from "./components/Contact";
+import Cart from "./components/Cart";
+import RestaurantMenu from "./components/RestaurantMenu";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Profile from "./components/ProfileClass";
 // const heading1 = React.createElement(
 //   "h1",
 //   { id: "head1", style: { color: "green" } ,key:"h1"},
@@ -10,7 +16,7 @@ import { Footer } from "./components/Footer";
 // );
 // const heading2 = React.createElement(
 //   "h2",
-//   { id: "head2",key:"h2" },
+//   { id: "head2",ke<AppLayout />y:"h2" },
 //   "this is my second heading"
 // );
 // const container = React.createElement("div", { id: "container" }, [
@@ -24,20 +30,52 @@ import { Footer } from "./components/Footer";
 //   </div>
 // );
 
-
-
-
-
-
 const AppLayout = () => {
   return (
     <>
-      <Header />
-      <Body />
-      <Footer />
+     <Header/>
+      <Outlet />
+      <Footer/>     
+      
     </>
   );
 };
 
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+        children: [
+          {
+            path: "profile",
+            element:<Profile/>
+          }
+        ]
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path:"/restaurant/:id",
+        element:<RestaurantMenu/>,
+        
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);

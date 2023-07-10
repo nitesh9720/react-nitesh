@@ -37,3 +37,13 @@
     /* border: 2px solid black; */
     border-radius: 5px;
 }
+.shimmer-card{
+    width: 100px;
+    height:100px;
+    background-color: lightgrey;
+    padding: 100px;
+    margin: 10px;
+}
+.menu-items{
+    display: flex;
+}

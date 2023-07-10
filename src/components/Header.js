@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import Logo from "../assets/images/download.jpeg"
 
 const Title = () => {
   return (
@@ -7,7 +9,7 @@ const Title = () => {
         <img
           className="logo"
           alt="logo"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDy9Em-5f6o7TA3yOo2eqbm_5Ol14b-3wRRJwf9FM&s"
+          src={Logo}
         />
       </a>
     </>
@@ -20,10 +22,10 @@ const Header = () => {
       <Title />
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/cart">Cart</Link></li>
         </ul>
       </div>
       {loggedInUser ? (
