@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Profile from "./components/ProfileClass";
 // const heading1 = React.createElement(
 //   "h1",
 //   { id: "head1", style: { color: "green" } ,key:"h1"},
@@ -52,6 +53,12 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+        children: [
+          {
+            path: "profile",
+            element:<Profile/>
+          }
+        ]
       },
       {
         path: "/contact",
