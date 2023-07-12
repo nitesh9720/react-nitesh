@@ -1,4 +1,6 @@
-import React from "react";
+import Shimmer from "./components/shimmer";
+
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/body";
@@ -9,6 +11,7 @@ import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Profile from "./components/ProfileClass";
+
 // const heading1 = React.createElement(
 //   "h1",
 //   { id: "head1", style: { color: "green" } ,key:"h1"},
@@ -29,14 +32,13 @@ import Profile from "./components/ProfileClass";
 //     <h2 id="head2">This is my second heading</h2>
 //   </div>
 // );
-
+const Instamart = lazy(() => import("./components/Instamart"));
 const AppLayout = () => {
   return (
     <>
-     <Header/>
+      <Header />
       <Outlet />
-      <Footer/>     
-      
+      <Footer />
     </>
   );
 };
@@ -56,9 +58,9 @@ const appRouter = createBrowserRouter([
         children: [
           {
             path: "profile",
-            element:<Profile/>
-          }
-        ]
+            element: <Profile />,
+          },
+        ],
       },
       {
         path: "/contact",
@@ -69,9 +71,16 @@ const appRouter = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path:"/restaurant/:id",
-        element:<RestaurantMenu/>,
-        
+        path: "/restaurant/:id",
+        element: <RestaurantMenu />,
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense fallback={<Shimmer/>}>
+            <Instamart />
+          </Suspense>
+        ),
       },
     ],
   },
