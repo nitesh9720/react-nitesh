@@ -41,11 +41,10 @@ const isOnline=useOnline();
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
-        <input
+      <div className="p-5 bg-pink-50 m-2">
+        <input 
           type="text"
-          className="search-input"
-          placeholder="Search"
+          className="focus:bg-green-200"
           value={searchInput}
           onChange={(e) => {
             setSearchInput(e.target.value);
@@ -54,7 +53,7 @@ const isOnline=useOnline();
             
         
         />
-        <button
+        <button className="mx-2 hover:bg-pink-600 bg-blue-500 text-white rounded p-2"
           onClick={() => {
             const data = filterData(searchInput, allRestaurants);
             setFilterRestaurant(data);
@@ -63,10 +62,10 @@ const isOnline=useOnline();
           Search
         </button>
       </div>
-      <div className="restaurantList">
+      <div className="flex flex-wrap ">
         {filterRestaurants.map((restaurant) => {
           return (
-            <Link to={"/restaurant/"+restaurant.data.id}> <RestaurantCard {...restaurant.data} key={restaurant.data.id} /></Link>
+            <Link className="m-2" to={"/restaurant/"+restaurant.data.id}> <RestaurantCard {...restaurant.data} key={restaurant.data.id} /></Link>
           );
         })}
       </div>
