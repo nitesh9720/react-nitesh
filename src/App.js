@@ -11,6 +11,9 @@ import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Profile from "./components/ProfileClass";
+import { Provider } from "react-redux";
+import UserContext from "./utils/UserContext";
+import store from "./utils/store";
 
 // const heading1 = React.createElement(
 //   "h1",
@@ -36,9 +39,13 @@ const Instamart = lazy(() => import("./components/Instamart"));
 const AppLayout = () => {
   return (
     <>
+    <Provider store={store}>
+    {/* <UserContext.Provider> */}
       <Header />
       <Outlet />
       <Footer />
+      {/* </UserContext.Provider> */}
+      </Provider>
     </>
   );
 };

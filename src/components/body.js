@@ -8,8 +8,8 @@ import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
 const Body = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [allRestaurants, setAllRestaurant] = useState([]);
-  const [filterRestaurants, setFilterRestaurant] = useState([]);
+  const [allRestaurants, setAllRestaurant] = useState(null);
+  const [filterRestaurants, setFilterRestaurant] = useState(null);
 
   useEffect(() => {
     getRestaurant();
@@ -32,7 +32,9 @@ const isOnline=useOnline();
     )
   }
 
-
+if(filterRestaurants===null){
+  return <Shimmer/>
+}
   if ((filterRestaurants.length === 0) &&(allRestaurants.length!==0)) {
     return <h1>No restaurant Found</h1>
   }
@@ -65,7 +67,7 @@ const isOnline=useOnline();
       <div className="flex flex-wrap ">
         {filterRestaurants.map((restaurant) => {
           return (
-            <Link className="m-2" to={"/restaurant/"+restaurant.data.id}> <RestaurantCard {...restaurant.data} key={restaurant.data.id} /></Link>
+            <Link key={restaurant.data.id}className="m-2" to={"/restaurant/"+restaurant.data.id}> <RestaurantCard {...restaurant.data} key={restaurant.data.id} /></Link>
           );
         })}
       </div>
