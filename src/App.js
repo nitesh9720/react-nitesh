@@ -14,7 +14,7 @@ import Profile from "./components/ProfileClass";
 import { Provider } from "react-redux";
 import UserContext from "./utils/UserContext";
 import store from "./utils/store";
-
+import Movies from "./components/Movies";
 // const heading1 = React.createElement(
 //   "h1",
 //   { id: "head1", style: { color: "green" } ,key:"h1"},
@@ -39,12 +39,12 @@ const Instamart = lazy(() => import("./components/Instamart"));
 const AppLayout = () => {
   return (
     <>
-    <Provider store={store}>
-    {/* <UserContext.Provider> */}
-      <Header />
-      <Outlet />
-      <Footer />
-      {/* </UserContext.Provider> */}
+      <Provider store={store}>
+        {/* <UserContext.Provider> */}
+        <Header />
+        <Outlet />
+        <Footer />
+        {/* </UserContext.Provider> */}
       </Provider>
     </>
   );
@@ -78,13 +78,17 @@ const appRouter = createBrowserRouter([
         element: <Cart />,
       },
       {
+        path: "/movies",
+        element: <Movies />,
+      },
+      {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
       },
       {
         path: "/instamart",
         element: (
-          <Suspense fallback={<Shimmer/>}>
+          <Suspense fallback={<Shimmer />}>
             <Instamart />
           </Suspense>
         ),

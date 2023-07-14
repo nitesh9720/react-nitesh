@@ -1,7 +1,8 @@
-const Contact=()=>{
-    return(
-        <><h1>
-            this is contact page</h1></>
-    )
-}
+import React, { useState, useMemo,useRef } from "react";
+
+const Contact = () => {
+ return(
+    <></>
+  );
+};
 export default Contact;
