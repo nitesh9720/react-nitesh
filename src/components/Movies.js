@@ -23,9 +23,8 @@ const Movies=()=>{
     async function handleApi() {
         
         const response = await fetch(url, options);
-        const { data } = await response.json()
-        setResult(data.translatedText)
-        console.log(result);
+        result = await response.text();
+        console.log(result.padStart.translatedText[0]);
     }
     
      

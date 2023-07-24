@@ -55,7 +55,7 @@ if(filterRestaurants===null){
             
         
         />
-        <button className="mx-2 hover:bg-pink-600 bg-blue-500 text-white rounded p-2"
+        <button data-testid="search-btn" className="mx-2 hover:bg-pink-600 bg-blue-500 text-white rounded p-2"
           onClick={() => {
             const data = filterData(searchInput, allRestaurants);
             setFilterRestaurant(data);
@@ -64,7 +64,7 @@ if(filterRestaurants===null){
           Search
         </button>
       </div>
-      <div className="flex flex-wrap ">
+      <div className="flex flex-wrap " data-testid="res-list">
         {filterRestaurants.map((restaurant) => {
           return (
             <Link key={restaurant.data.id}className="m-2" to={"/restaurant/"+restaurant.data.id}> <RestaurantCard {...restaurant.data} key={restaurant.data.id} /></Link>
