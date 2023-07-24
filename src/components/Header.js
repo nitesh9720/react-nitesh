@@ -12,7 +12,7 @@ const Title = () => {
   return (
     <>
       <a href="/">
-        <img className="h-24 p-2" alt="logo" src={Logo} />
+        <img data-testid="logo" className="h-24 p-2" alt="logo" src={Logo} />
       </a>
     </>
   );
@@ -36,8 +36,8 @@ const Header = () => {
           <li className="px-2">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="px-2">
-            <Link to="/cart">Cart {cartItems.length}</Link>
+          <li className="px-2" data-testid="cart-items">
+           Cart {cartItems.length}
           </li>
           <li className="px-2">
             <Link to="/instamart">Instamart</Link>
@@ -45,7 +45,7 @@ const Header = () => {
         </ul>
       </div>
     
-      <h1>{isOnline ? "✅" : "🔴"}</h1>
+      <h1 data-testid="online-status">{isOnline ? "✅" : "🔴"}</h1>
       
 {/* <span>{user.name}</span> */}
       {loggedInUser ? (
