@@ -1,9 +1,10 @@
 import { useState } from "react"
 
 const Movies=()=>{
-    const [text,setText]=useState("")
-    
+    const [sentence, setText] = useState("")
+    const[result,setResult]=useState("")
     const url = 'https://text-translator2.p.rapidapi.com/translate';
+
     const options = {
         method: 'POST',
         headers: {
@@ -13,23 +14,29 @@ const Movies=()=>{
         },
         body: new URLSearchParams({
             source_language: 'en',
-            target_language: 'id',
-            text: {text}
+            target_language: 'hi',
+            text: sentence
         })
     };
-    let result=""
-    async function handleApi(){
-        const response = await fetch(url, options);
-        result = await response.text();
-        console.log(result.padStart.translatedText[0]);
-    }
+    
+  
+    async function handleApi() {
         
+        const response = await fetch(url, options);
+        const { data } = await response.json()
+        setResult(data.translatedText)
+        console.log(result);
+    }
+    
+     
+
     
     return(
         <>
         <div className="">
-        <input value={text} className="border-4 border-blue-400" type="text" onChange={(e)=>{
-            setText(e.target.value)
+        <input value={sentence} className="border-4 border-blue-400" type="text" onChange={(e)=>{
+                    setText(e.target.value)
+                    
         }}/>
         <button onClick={()=> handleApi()}>Translate</button>
         <p className="m-2 p-2">{result}</p>
