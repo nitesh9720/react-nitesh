@@ -22,6 +22,7 @@ const Movies=()=>{
         const response = await fetch(url, options);
         result = await response.text();
         console.log(result.padStart.translatedText[0]);
+        
     }
         
     
