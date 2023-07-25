@@ -8,8 +8,8 @@ import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
 const Body = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [allRestaurants, setAllRestaurant] = useState(null);
-  const [filterRestaurants, setFilterRestaurant] = useState(null);
+  const [allRestaurants, setAllRestaurant] = useState([]);
+  const [filterRestaurants, setFilterRestaurant] = useState([]);
 
   useEffect(() => {
     getRestaurant();
@@ -32,14 +32,14 @@ const isOnline=useOnline();
     )
   }
 
-if(filterRestaurants===null){
+if(allRestaurants.length===0){
   return <Shimmer/>
 }
-  if ((filterRestaurants.length === 0) &&(allRestaurants.length!==0)) {
+  if ((filterRestaurants.length === 0)&& (allRestaurants.length!==0)) {
     return <h1>No restaurant Found</h1>
   }
 
-  return allRestaurants?.length === 0 ? (
+  return allRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <>
@@ -50,7 +50,7 @@ if(filterRestaurants===null){
           value={searchInput}
           onChange={(e) => {
             setSearchInput(e.target.value);
-          }}
+          }} data-testid="search-input"
         
             
         
